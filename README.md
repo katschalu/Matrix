@@ -18,7 +18,7 @@ Java Library for mathematical calculations of Matrices
 
 If you like to help improving Matrix your very welcome.
 
-For access to the repository pleas write an [e-mail to testgoofy](mailto:8do16n9tz@relay.firefox.com).
+Please make sure you read our [Contribution guide lines](.github/CONTRIBUTING.md) before adding some code.
 
 
 
