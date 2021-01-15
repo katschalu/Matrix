@@ -47,3 +47,9 @@ If you like to know how you can use this repository, please read our [Wiki](http
 If you need any further information, please feel free to read our [Wiki](https://github.com/testgoofy/Matrix/wiki).
 
 When you sill have open questions don't hesitate to look into our [discussion](https://github.com/testgoofy/Matrix/discussions) and write a question to our [Q&A - Section](https://github.com/testgoofy/Matrix/discussions?discussions_q=category%3AQ%26A).
+
+
+
+---
+
+[License: MIT](LICENSE)				[Take action: Contribute](.github/CONTRIBUTING.md)				[Give Feedback](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=feedback&template=feedback.md&title=)				[Report a Bug](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=Something+went+clearly+wrog...)

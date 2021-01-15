@@ -26,3 +26,9 @@ This informations contain:
 If you like to contribute to the code, fork the project. Then add your code and open a pull - request.
 
 We use the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) for our Java code and the [Udacity Git Commit Message Style Guide](https://udacity.github.io/git-styleguide/) for our Git Commits.
+
+
+
+---
+
+[License: MIT](LICENSE)				[Take action: Contribute](.github/CONTRIBUTING.md)				[Give Feedback](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=feedback&template=feedback.md&title=)				[Report a Bug](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=Something+went+clearly+wrog...)
