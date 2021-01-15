@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **What did you like?**
-Descripe, what you like on the Project
+Describe, what you like on the Project
 
-**What did'nt you like?**
+**What didn't you like?**
 Where could we improve? Did you consider opening a Feature request?

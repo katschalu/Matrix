@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[BUG]: Something went clearly wrog..."
+title: "Something went clearly wrong..."
 labels: bug
 assignees: ''
 
@@ -20,8 +20,8 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Screen shots**
+If applicable, add screen shots to help explain your problem.
 
 **Desktop:**
  - OS: [e.g. iOS]
