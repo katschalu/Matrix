@@ -6,7 +6,7 @@
 
     <groupId>ch.testgoofy.math</groupId>
     <artifactId>matrix</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

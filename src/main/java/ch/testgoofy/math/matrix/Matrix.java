@@ -25,13 +25,13 @@ package ch.testgoofy.math.matrix;
 /**
  * Represents a mathematical matrix
  * @author  testgoofy
- * @version 1.0.0
+ * @version 1.1.0
  * @since 1.0.0
  */
 public class Matrix {
-  private double[][] data;
-  private int rows;
-  private int columns;
+  protected double[][] data;
+  protected int rows;
+  protected int columns;
 
   public double[][] getData() {
     return data;
