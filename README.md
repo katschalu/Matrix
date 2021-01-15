@@ -24,6 +24,22 @@ Please make sure you read our [Contribution guide lines](.github/CONTRIBUTING.md
 
 ## Installation and Usage
 
+If you like to use this code, feel free to download the [latest release](https://github.com/testgoofy/Matrix/releases/).
+
+You can also add this repository as a maven dependency:
+
+```xml
+<dependency>
+  <groupId>ch.testgoofy.math</groupId>
+  <artifactId>matrix</artifactId>
+  <version>1.1.1</version>
+</dependency>
+```
+
+
+
+If you like to know how you can use this repository, please read our [Wiki](https://github.com/testgoofy/Matrix/wiki).
+
 
 
 ## Further Information
