@@ -14,7 +14,7 @@ Java Library for mathematical calculations of Matrices
 
 ## Contribute
 
-***IF YOU FOUND A BUG, PLEASE REPORT IT AS A [NEW BUG REPORT](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D%3A+Something+went+clearly+wrog...)***
+***IF YOU FOUND A BUG, PLEASE REPORT IT AS A [NEW BUG REPORT](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=Something+went+clearly+wrog...)***
 
 If you like to help improving Matrix your very welcome.
 

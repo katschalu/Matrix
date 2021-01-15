@@ -4,13 +4,13 @@ First of all, a big thank you for trying to contribute. Open-Source projects dep
 
 ## I found a bug. What next?
 
-If you found a bug, please report it as [a new issue](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D%3A+Something+went+clearly+wrog...).
+If you found a bug, please report it as [a new issue](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=Something+went+clearly+wrog...).
 
 You will see a template for a bug report. Please fill in all informations you can, so we can reproduce the bug.
 
 This informations contain:
 
-- Use a meaningful title with the prefix `[BUG]`. For example: `[BUG] System Crash on Windows 10`
+- Use a meaningful title . For example: `System Crash on Windows 10`
 - Add a description what happen.
 - Add the steps you did. This is important for reproducing. Only if we can reproduce it, we're able to fix it. These steps could contain:
   - Actions like: `Click the button "Submit"` or `Scroll down to "About us"`
