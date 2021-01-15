@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[BUG]: Something went clearly wrog..."
+title: "Something went clearly wrog..."
 labels: bug
 assignees: ''
 
