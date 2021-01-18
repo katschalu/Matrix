@@ -25,7 +25,7 @@ package ch.testgoofy.math.matrix;
 /**
  * Represents a mathematical matrix
  * @author  testgoofy
- * @version 1.1.0
+ * @version 1.1.1
  * @since 1.0.0
  */
 public class Matrix {
@@ -257,4 +257,6 @@ public class Matrix {
     this.columns = columns;
     data = new double[rows][columns];
   }
+
+  protected Matrix(){}
 }
