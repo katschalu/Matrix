@@ -14,7 +14,7 @@ Java Library for mathematical calculations of Matrices
 
 ## Contribute
 
-***IF YOU FOUND A BUG, PLEASE REPORT IT AS A [NEW BUG REPORT](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D%3A+Something+went+clearly+wrog...)***
+***IF YOU FOUND A BUG, PLEASE REPORT IT AS A [NEW BUG REPORT](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=Something+went+clearly+wrog...)***
 
 If you like to help improving Matrix your very welcome.
 
@@ -24,6 +24,22 @@ Please make sure you read our [Contribution guide lines](.github/CONTRIBUTING.md
 
 ## Installation and Usage
 
+If you like to use this code, feel free to download the [latest release](https://github.com/testgoofy/Matrix/releases/).
+
+You can also add this repository as a maven dependency:
+
+```xml
+<dependency>
+  <groupId>ch.testgoofy.math</groupId>
+  <artifactId>matrix</artifactId>
+  <version>1.1.1</version>
+</dependency>
+```
+
+
+
+If you like to know how you can use this repository, please read our [Wiki](https://github.com/testgoofy/Matrix/wiki).
+
 
 
 ## Further Information
@@ -31,3 +47,9 @@ Please make sure you read our [Contribution guide lines](.github/CONTRIBUTING.md
 If you need any further information, please feel free to read our [Wiki](https://github.com/testgoofy/Matrix/wiki).
 
 When you sill have open questions don't hesitate to look into our [discussion](https://github.com/testgoofy/Matrix/discussions) and write a question to our [Q&A - Section](https://github.com/testgoofy/Matrix/discussions?discussions_q=category%3AQ%26A).
+
+
+
+---
+
+[License: MIT](LICENSE)				[Take action: Contribute](.github/CONTRIBUTING.md)				[Give Feedback](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=feedback&template=feedback.md&title=)				[Report a Bug](https://github.com/testgoofy/Matrix/issues/new?assignees=&labels=bug&template=bug_report.md&title=Something+went+clearly+wrog...)
