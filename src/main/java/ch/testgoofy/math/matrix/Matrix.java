@@ -304,6 +304,15 @@ public class Matrix {
   }
 
   /**
+   * Returns the Matrix as an Array. Synonym for {@link #getData()}
+   * @see #getData()
+   * @return The Matrix as an Array
+   */
+  public double[][] toArray(){
+    return getData();
+  }
+
+  /**
    * Transposes the Matrix
    */
   public void transpose(){
