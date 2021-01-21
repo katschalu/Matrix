@@ -22,12 +22,10 @@
 
 package ch.testgoofy.math.matrix;
 
-import java.util.Arrays;
-
 /**
  * Represents a mathematical matrix
  * @author  testgoofy
- * @version 1.3.1
+ * @version 1.3.2
  * @since 1.0.0
  */
 public class Matrix {
@@ -338,9 +336,12 @@ public class Matrix {
   }
 
   public Matrix(Matrix matrix){
-    data = matrix.data;
     rows = matrix.rows;
     columns = matrix.columns;
+    data = new double[rows][columns];
+    for (int i = 0; i < rows; i++) {
+      System.arraycopy(matrix.data[i], 0, data[i], 0, columns);
+    }
   }
 
   public Matrix(double[][] data) throws IllegalArgumentException{

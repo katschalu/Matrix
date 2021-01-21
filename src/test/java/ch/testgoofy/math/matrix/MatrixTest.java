@@ -81,6 +81,20 @@ class MatrixTest {
   }
 
   @Test
+  @DisplayName("Deep copy a matrix")
+  void init_copy(){
+    Matrix m1 = new Matrix(new double[][]{
+        {1.0,2.0,3.0},
+        {4.0,5.0,6.0}
+    });
+    Matrix m2 = new Matrix(m1);
+    m1.data[0][1] = 0.0;
+    assertEquals(2.0, m2.data[0][1]);
+    m2.data[1][1] = 10.0;
+    assertEquals(5.0, m1.data[1][1]);
+  }
+
+  @Test
   @DisplayName("Add a scalar to a matrix (static)")
   void add_scalar_static(){
     Matrix matrix = new Matrix(new double[][]{
