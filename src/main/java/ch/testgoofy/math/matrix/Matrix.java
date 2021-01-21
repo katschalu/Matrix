@@ -194,7 +194,7 @@ public class Matrix {
    * @param matrix  The matrix to be added
    */
   public void add(Matrix matrix){
-    data = Matrix.add(new Matrix(data), matrix).data;
+    data = add(new Matrix(data), matrix).data;
   }
 
   /**
@@ -250,10 +250,26 @@ public class Matrix {
   }
 
   /**
+   * Subtracts a scalar from the matrix
+   * @param scalar  The scalar to be subtracted
+   */
+  public void subtract(double scalar){
+    data = subtract(new Matrix(data), scalar).data;
+  }
+
+  /**
+   * Subtracts a matrix from the matrix
+   * @param matrix  The matrix to be subtracted
+   */
+  public void subtract(Matrix matrix){
+    data = subtract(new Matrix(data), matrix).data;
+  }
+
+  /**
    * Transposes the Matrix
    */
   public void transpose(){
-    Matrix result = Matrix.transpose(new Matrix(data));
+    Matrix result = transpose(new Matrix(data));
     data = result.data;
     rows = result.rows;
     columns = result.columns;
