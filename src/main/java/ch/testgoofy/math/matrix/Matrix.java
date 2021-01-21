@@ -27,7 +27,7 @@ import java.util.Arrays;
 /**
  * Represents a mathematical matrix
  * @author  testgoofy
- * @version 1.3.0
+ * @version 1.3.1
  * @since 1.0.0
  */
 public class Matrix {
@@ -316,7 +316,15 @@ public class Matrix {
 
   @Override
   public String toString() {
-    return Arrays.toString(data);
+    String result = "";
+    for (int i = 0; i < rows; i++) {
+      result += "{";
+      for (int j = 0; j < columns; j++) {
+        result += "[" + data[i][j] + "]";
+      }
+      result += "}";
+    }
+    return result;
   }
 
   /**
