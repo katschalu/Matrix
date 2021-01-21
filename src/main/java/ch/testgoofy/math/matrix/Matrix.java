@@ -25,7 +25,7 @@ package ch.testgoofy.math.matrix;
 /**
  * Represents a mathematical matrix
  * @author  testgoofy
- * @version 1.1.1
+ * @version 1.2.0
  * @since 1.0.0
  */
 public class Matrix {
