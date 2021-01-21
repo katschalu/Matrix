@@ -22,6 +22,8 @@
 
 package ch.testgoofy.math.matrix;
 
+import java.util.Arrays;
+
 /**
  * Represents a mathematical matrix
  * @author  testgoofy
@@ -310,6 +312,11 @@ public class Matrix {
    */
   public double[][] toArray(){
     return getData();
+  }
+
+  @Override
+  public String toString() {
+    return Arrays.toString(data);
   }
 
   /**
