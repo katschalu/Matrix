@@ -73,6 +73,7 @@ public class Matrix {
       case ADDITION -> s1 + s2;
       case SUBTRACTION -> s1 - s2;
       case MULTIPLICATION -> s1 * s2;
+      case DIVISION -> s1 / s2;
       default -> throw new IllegalArgumentException("Operation '" + operation.name() + "' is not known");
     };
   }
@@ -88,7 +89,7 @@ public class Matrix {
   }
 
   /**
-   * Adds to matrices
+   * Adds tow matrices
    * @param m1  The first Matrix to be added
    * @param m2  The second Matrix to be added
    * @return  The sum as a matrix
@@ -96,6 +97,27 @@ public class Matrix {
    */
   public static Matrix add(Matrix m1, Matrix m2) throws IllegalArgumentException{
     return calculate(m1, Operation.ADDITION, m2);
+  }
+
+  /**
+   * Divides a scalar from a matrix
+   * @param matrix  the matrix from witch the scalar should be divided
+   * @param scalar  the scalar to be divided
+   * @return  the quotient as a matrix
+   */
+  public static Matrix divide(Matrix matrix, double scalar){
+    return calculate(matrix, Operation.DIVISION, scalar);
+  }
+
+  /**
+   * Divides tow matrices
+   * @param m1  The first Matrix to be divided from
+   * @param m2  The second Matrix to be divided
+   * @return  The quotient as a matrix
+   * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
+   */
+  public static Matrix divide(Matrix m1, Matrix m2) throws IllegalArgumentException{
+    return calculate(m1, Operation.DIVISION, m2);
   }
 
   /**
@@ -195,6 +217,22 @@ public class Matrix {
    */
   public void add(Matrix matrix){
     data = add(new Matrix(data), matrix).data;
+  }
+
+  /**
+   * Divides a scalar from the matrix
+   * @param scalar  The scalar to be divided
+   */
+  public void divide(double scalar){
+    data = divide(new Matrix(data), scalar).data;
+  }
+
+  /**
+   * Divides a matrix from the matrix
+   * @param matrix  The matrix to be divided
+   */
+  public void divide(Matrix matrix){
+    data = divide(new Matrix(data), matrix).data;
   }
 
   /**
