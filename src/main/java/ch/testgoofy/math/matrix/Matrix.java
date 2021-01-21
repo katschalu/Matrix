@@ -45,6 +45,38 @@ public class Matrix {
     return columns;
   }
 
+  private static Matrix calculate(Matrix matrix, Operation operation, double scalar){
+    Matrix result = new Matrix(matrix);
+    for (int i = 0; i < matrix.rows; i++) {
+      for (int j = 0; j < matrix.columns; j++) {
+        result.data[i][j] = calculate(matrix.data[i][j], operation, scalar);
+      }
+    }
+    return result;
+  }
+
+  private static Matrix calculate(Matrix m1, Operation operation, Matrix m2) throws IllegalArgumentException{
+    if (m1.rows != m2.rows || m1.columns != m2.columns){
+      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the correct dimensions");
+    }
+    Matrix result = new Matrix(m1);
+    for (int i = 0; i < m1.rows; i++) {
+      for (int j = 0; j < m1.columns; j++) {
+        result.data[i][j] = calculate(m1.data[i][j], operation, m2.data[i][j]);
+      }
+    }
+    return result;
+  }
+
+  private static double calculate(double s1, Operation operation, double s2){
+    return switch (operation){
+      case ADDITION -> s1 + s2;
+      case SUBTRACTION -> s1 - s2;
+      case MULTIPLICATION -> s1 * s2;
+      default -> throw new IllegalArgumentException("Operation '" + operation.name() + "' is not known");
+    };
+  }
+
   /**
    * Adds a scalar to a matrix
    * @param matrix  the matrix to witch the scalar should be added
@@ -52,13 +84,7 @@ public class Matrix {
    * @return  the sum as a matrix
    */
   public static Matrix add(Matrix matrix, double scalar){
-    Matrix sum = new Matrix(matrix);
-    for (int i = 0; i < sum.rows; i++) {
-      for (int j = 0; j < sum.columns; j++) {
-        sum.data[i][j] += scalar;
-      }
-    }
-    return sum;
+    return calculate(matrix, Operation.ADDITION, scalar);
   }
 
   /**
@@ -69,16 +95,7 @@ public class Matrix {
    * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
    */
   public static Matrix add(Matrix m1, Matrix m2) throws IllegalArgumentException{
-    if (m1.rows != m2.rows || m1.columns != m2.columns){
-      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the same dimensions");
-    }
-    Matrix sum = new Matrix(m1);
-    for (int i = 0; i < sum.rows; i++) {
-      for (int j = 0; j < sum.columns; j++) {
-        sum.data[i][j] += m2.data[i][j];
-      }
-    }
-    return sum;
+    return calculate(m1, Operation.ADDITION, m2);
   }
 
   /**
@@ -88,13 +105,7 @@ public class Matrix {
    * @return  the product as a matrix
    */
   public static Matrix multiply(Matrix matrix, double scalar){
-    Matrix product = new Matrix(matrix);
-    for (int i = 0; i < product.rows; i++) {
-      for (int j = 0; j < product.columns; j++) {
-        product.data[i][j] *= scalar;
-      }
-    }
-    return product;
+    return calculate(matrix, Operation.MULTIPLICATION, scalar);
   }
 
   /**
@@ -130,16 +141,7 @@ public class Matrix {
    * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
    */
   public static Matrix multiplyEachComponent(Matrix m1, Matrix m2) throws IllegalArgumentException{
-    if (m1.rows != m2.rows || m1.columns != m2.columns){
-      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the same dimensions");
-    }
-    Matrix product = new Matrix(m1);
-    for (int i = 0; i < product.rows; i++) {
-      for (int j = 0; j < product.columns; j++) {
-        product.data[i][j] *= m2.data[i][j];
-      }
-    }
-    return product;
+    return calculate(m1, Operation.MULTIPLICATION, m2);
   }
 
   /**
@@ -149,13 +151,7 @@ public class Matrix {
    * @return  the difference as a matrix
    */
   public static Matrix subtract(Matrix matrix, double scalar){
-    Matrix difference = new Matrix(matrix);
-    for (int i = 0; i < difference.rows; i++) {
-      for (int j = 0; j < difference.columns; j++) {
-        difference.data[i][j] -= scalar;
-      }
-    }
-    return difference;
+    return calculate(matrix, Operation.SUBTRACTION, scalar);
   }
 
   /**
@@ -166,16 +162,7 @@ public class Matrix {
    * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
    */
   public static Matrix subtract(Matrix m1, Matrix m2) throws IllegalArgumentException{
-    if (m1.rows != m2.rows || m1.columns != m2.columns){
-      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the same dimensions");
-    }
-    Matrix difference = new Matrix(m1);
-    for (int i = 0; i < difference.rows; i++) {
-      for (int j = 0; j < difference.columns; j++) {
-        difference.data[i][j] -= m2.data[i][j];
-      }
-    }
-    return difference;
+    return calculate(m1, Operation.SUBTRACTION, m2);
   }
 
   /**
@@ -225,6 +212,7 @@ public class Matrix {
           for (int j = 0; j < columns; j++) {
             if (data[i][j] != that.data[i][j]){
               sameData = false;
+              break;
             }
           }
           return sameData;
