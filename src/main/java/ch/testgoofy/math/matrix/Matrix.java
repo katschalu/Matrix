@@ -25,7 +25,7 @@ package ch.testgoofy.math.matrix;
 /**
  * Represents a mathematical matrix
  * @author  testgoofy
- * @version 1.1.1
+ * @version 1.2.0
  * @since 1.0.0
  */
 public class Matrix {
@@ -45,6 +45,39 @@ public class Matrix {
     return columns;
   }
 
+  private static Matrix calculate(Matrix matrix, Operation operation, double scalar){
+    Matrix result = new Matrix(matrix);
+    for (int i = 0; i < matrix.rows; i++) {
+      for (int j = 0; j < matrix.columns; j++) {
+        result.data[i][j] = calculate(matrix.data[i][j], operation, scalar);
+      }
+    }
+    return result;
+  }
+
+  private static Matrix calculate(Matrix m1, Operation operation, Matrix m2) throws IllegalArgumentException{
+    if (m1.rows != m2.rows || m1.columns != m2.columns){
+      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the correct dimensions");
+    }
+    Matrix result = new Matrix(m1);
+    for (int i = 0; i < m1.rows; i++) {
+      for (int j = 0; j < m1.columns; j++) {
+        result.data[i][j] = calculate(m1.data[i][j], operation, m2.data[i][j]);
+      }
+    }
+    return result;
+  }
+
+  private static double calculate(double s1, Operation operation, double s2){
+    return switch (operation){
+      case ADDITION -> s1 + s2;
+      case SUBTRACTION -> s1 - s2;
+      case MULTIPLICATION -> s1 * s2;
+      case DIVISION -> s1 / s2;
+      default -> throw new IllegalArgumentException("Operation '" + operation.name() + "' is not known");
+    };
+  }
+
   /**
    * Adds a scalar to a matrix
    * @param matrix  the matrix to witch the scalar should be added
@@ -52,33 +85,39 @@ public class Matrix {
    * @return  the sum as a matrix
    */
   public static Matrix add(Matrix matrix, double scalar){
-    Matrix sum = new Matrix(matrix);
-    for (int i = 0; i < sum.rows; i++) {
-      for (int j = 0; j < sum.columns; j++) {
-        sum.data[i][j] += scalar;
-      }
-    }
-    return sum;
+    return calculate(matrix, Operation.ADDITION, scalar);
   }
 
   /**
-   * Adds to matrices
+   * Adds tow matrices
    * @param m1  The first Matrix to be added
    * @param m2  The second Matrix to be added
    * @return  The sum as a matrix
    * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
    */
   public static Matrix add(Matrix m1, Matrix m2) throws IllegalArgumentException{
-    if (m1.rows != m2.rows || m1.columns != m2.columns){
-      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the same dimensions");
-    }
-    Matrix sum = new Matrix(m1);
-    for (int i = 0; i < sum.rows; i++) {
-      for (int j = 0; j < sum.columns; j++) {
-        sum.data[i][j] += m2.data[i][j];
-      }
-    }
-    return sum;
+    return calculate(m1, Operation.ADDITION, m2);
+  }
+
+  /**
+   * Divides a scalar from a matrix
+   * @param matrix  the matrix from witch the scalar should be divided
+   * @param scalar  the scalar to be divided
+   * @return  the quotient as a matrix
+   */
+  public static Matrix divide(Matrix matrix, double scalar){
+    return calculate(matrix, Operation.DIVISION, scalar);
+  }
+
+  /**
+   * Divides tow matrices
+   * @param m1  The first Matrix to be divided from
+   * @param m2  The second Matrix to be divided
+   * @return  The quotient as a matrix
+   * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
+   */
+  public static Matrix divide(Matrix m1, Matrix m2) throws IllegalArgumentException{
+    return calculate(m1, Operation.DIVISION, m2);
   }
 
   /**
@@ -88,13 +127,7 @@ public class Matrix {
    * @return  the product as a matrix
    */
   public static Matrix multiply(Matrix matrix, double scalar){
-    Matrix product = new Matrix(matrix);
-    for (int i = 0; i < product.rows; i++) {
-      for (int j = 0; j < product.columns; j++) {
-        product.data[i][j] *= scalar;
-      }
-    }
-    return product;
+    return calculate(matrix, Operation.MULTIPLICATION, scalar);
   }
 
   /**
@@ -130,16 +163,28 @@ public class Matrix {
    * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
    */
   public static Matrix multiplyEachComponent(Matrix m1, Matrix m2) throws IllegalArgumentException{
-    if (m1.rows != m2.rows || m1.columns != m2.columns){
-      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the same dimensions");
-    }
-    Matrix product = new Matrix(m1);
-    for (int i = 0; i < product.rows; i++) {
-      for (int j = 0; j < product.columns; j++) {
-        product.data[i][j] *= m2.data[i][j];
-      }
-    }
-    return product;
+    return calculate(m1, Operation.MULTIPLICATION, m2);
+  }
+
+  /**
+   * Subtracts a scalar from a matrix
+   * @param matrix  the matrix to witch the scalar should be subtracted
+   * @param scalar  the scalar to be subtracted
+   * @return  the difference as a matrix
+   */
+  public static Matrix subtract(Matrix matrix, double scalar){
+    return calculate(matrix, Operation.SUBTRACTION, scalar);
+  }
+
+  /**
+   * Subtracts to matrices
+   * @param m1  The first Matrix to be subtracted from
+   * @param m2  The second Matrix to be subtracted
+   * @return  The difference as a matrix
+   * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
+   */
+  public static Matrix subtract(Matrix m1, Matrix m2) throws IllegalArgumentException{
+    return calculate(m1, Operation.SUBTRACTION, m2);
   }
 
   /**
@@ -171,7 +216,23 @@ public class Matrix {
    * @param matrix  The matrix to be added
    */
   public void add(Matrix matrix){
-    data = Matrix.add(new Matrix(data), matrix).data;
+    data = add(new Matrix(data), matrix).data;
+  }
+
+  /**
+   * Divides a scalar from the matrix
+   * @param scalar  The scalar to be divided
+   */
+  public void divide(double scalar){
+    data = divide(new Matrix(data), scalar).data;
+  }
+
+  /**
+   * Divides a matrix from the matrix
+   * @param matrix  The matrix to be divided
+   */
+  public void divide(Matrix matrix){
+    data = divide(new Matrix(data), matrix).data;
   }
 
   /**
@@ -189,6 +250,7 @@ public class Matrix {
           for (int j = 0; j < columns; j++) {
             if (data[i][j] != that.data[i][j]){
               sameData = false;
+              break;
             }
           }
           return sameData;
@@ -226,10 +288,35 @@ public class Matrix {
   }
 
   /**
+   * Subtracts a scalar from the matrix
+   * @param scalar  The scalar to be subtracted
+   */
+  public void subtract(double scalar){
+    data = subtract(new Matrix(data), scalar).data;
+  }
+
+  /**
+   * Subtracts a matrix from the matrix
+   * @param matrix  The matrix to be subtracted
+   */
+  public void subtract(Matrix matrix){
+    data = subtract(new Matrix(data), matrix).data;
+  }
+
+  /**
+   * Returns the Matrix as an Array. Synonym for {@link #getData()}
+   * @see #getData()
+   * @return The Matrix as an Array
+   */
+  public double[][] toArray(){
+    return getData();
+  }
+
+  /**
    * Transposes the Matrix
    */
   public void transpose(){
-    Matrix result = Matrix.transpose(new Matrix(data));
+    Matrix result = transpose(new Matrix(data));
     data = result.data;
     rows = result.rows;
     columns = result.columns;
