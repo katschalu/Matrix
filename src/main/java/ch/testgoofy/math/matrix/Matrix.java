@@ -143,6 +143,42 @@ public class Matrix {
   }
 
   /**
+   * Subtracts a scalar from a matrix
+   * @param matrix  the matrix to witch the scalar should be subtracted
+   * @param scalar  the scalar to be subtracted
+   * @return  the difference as a matrix
+   */
+  public static Matrix subtract(Matrix matrix, double scalar){
+    Matrix difference = new Matrix(matrix);
+    for (int i = 0; i < difference.rows; i++) {
+      for (int j = 0; j < difference.columns; j++) {
+        difference.data[i][j] -= scalar;
+      }
+    }
+    return difference;
+  }
+
+  /**
+   * Subtracts to matrices
+   * @param m1  The first Matrix to be subtracted from
+   * @param m2  The second Matrix to be subtracted
+   * @return  The difference as a matrix
+   * @throws IllegalArgumentException Matrix 'm1' and Matrix 'm2' must have the same dimensions
+   */
+  public static Matrix subtract(Matrix m1, Matrix m2) throws IllegalArgumentException{
+    if (m1.rows != m2.rows || m1.columns != m2.columns){
+      throw new IllegalArgumentException("Matrix 'm1' and Matrix 'm2' don't have the same dimensions");
+    }
+    Matrix difference = new Matrix(m1);
+    for (int i = 0; i < difference.rows; i++) {
+      for (int j = 0; j < difference.columns; j++) {
+        difference.data[i][j] -= m2.data[i][j];
+      }
+    }
+    return difference;
+  }
+
+  /**
    * Transpose a Matrix
    * @see <a href="https://en.wikipedia.org/wiki/Transpose" hreflang="en" title="Wikipedia">Transpose</a>
    * @param matrix The matrix to be transposed
